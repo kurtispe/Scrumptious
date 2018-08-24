@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace Scrumptious.MvcClient.Models
 {
-    public class SprintViewModel
+    public class TaskViewModel
     {
-        public SprintViewModel()
+        public TaskViewModel()
         {
             Backlog = new HashSet<BacklogViewModel>();
         }

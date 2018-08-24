@@ -87,7 +87,7 @@ namespace Scrumptious.Data.Models
                 return context.User.SingleOrDefault(u => u.UserId == id) as T;
             }
             else
-                return new NotSupportedExpection();
+                return default(T);
         }
 
         public List<T> ReadAll<T>() where T : class
