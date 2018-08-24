@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 using Scrumptious.MvcClient.Models;
 using System.Threading;
 using System.Text;
+using System.Collections.Generic;
 
 namespace Scrumptious.MvcClient.Controllers
 {
@@ -13,6 +14,7 @@ namespace Scrumptious.MvcClient.Controllers
     public class ProjectController : Controller
     {
         private readonly HttpClient http = new HttpClient();
+
         [HttpGet]
         public async Task<IActionResult> Get()
         {
@@ -42,6 +44,7 @@ namespace Scrumptious.MvcClient.Controllers
             var content = JsonConvert.DeserializeObject<ProjectViewModel>(await x.Content.ReadAsStringAsync());
             ViewData["pagetitle"] = "Scrumptious";
             ViewBag.Title = "Scrumptious, the Scrum Master Program!";
+
             ViewBag.content = content;
             ViewBag.userQuery = true;
             return View();
@@ -51,7 +54,6 @@ namespace Scrumptious.MvcClient.Controllers
         public IActionResult Post(ProjectViewModel data)
         {
             data.active = false;
-            data.sprint = null;
             var content = JsonConvert.SerializeObject(data);
             http.PostAsync("http://localhost:62021/api/project", new StringContent(content, Encoding.UTF8, "application/json"));
             return Redirect("/project");
