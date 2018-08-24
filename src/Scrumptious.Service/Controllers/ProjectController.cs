@@ -15,11 +15,11 @@ namespace Scrumptious.Service.Controllers
 {
     [Produces("application/json")]
     [Route("api/[controller]")]
-    public class BacklogController : Controller
+    public class ProjetController : Controller
     {
         private EntityData data;
 
-        public BacklogController()
+        public ProjectController()
         {
             data = new EntityData();
         }
