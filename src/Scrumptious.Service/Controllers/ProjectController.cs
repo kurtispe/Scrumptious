@@ -14,15 +14,25 @@ using System.Net.Http;
 namespace Scrumptious.Service.Controllers
 {
     [Produces("application/json")]
-    [Consumes("application/json")]
     [Route("api/[controller]")]
-    public class ProjectController : Controller
+    public class BacklogController : Controller
     {
         private EntityData data;
 
-        public ProjectController()
+        public BacklogController()
         {
             data = new EntityData();
+        }
+
+        [HttpGet]
+        [Route("all")]
+        [ProducesResponseType(typeof(IActionResult), 200)]
+        public async Task<IActionResult> Get()
+        {
+            return await System.Threading.Tasks.Task.Run(() =>
+            {
+                return Ok(data.ReadAll<Backlog>());
+            });
         }
 
         [HttpGet("{ID:int}")]
@@ -31,19 +41,20 @@ namespace Scrumptious.Service.Controllers
         {
             return await System.Threading.Tasks.Task.Run(() =>
             {
-                return Ok(data.ReadList<Project>(ID));
+                return Ok(data.ReadList<Backlog>(ID));
             });
         }
 
         [HttpPost]
-        public async System.Threading.Tasks.Task Post([FromBody] Project P)
+        public async System.Threading.Tasks.Task Post([FromBody] Backlog P)
         {
             await System.Threading.Tasks.Task.Run(() =>
             {
                 data.SaveAsync(P);
             });
+            
+    
         }
-
 
     }
 }
