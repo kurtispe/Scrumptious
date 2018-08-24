@@ -1,26 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Scrumptious.MvcClient.Models
 {
     public class TaskViewModel
     {
-        public TaskViewModel()
-        {
-            Backlog = new HashSet<BacklogViewModel>();
-        }
-
-        public int SprintId { get; set; }
-
-        public bool Completed { get; set; }
-        public int FkProjectId { get; set; }
-
-        public ICollection<BacklogViewModel> Backlog { get; set; }
-
         public string Name { get; set; }
-        public DateTime StartDate { get; set; }
-        public DateTime EndDate { get; set; }
-        public string SprintDescription { get; set; }
-
+        public string TaskDescription { get; set; }
+        public string Requirements { get; set; }
+        public bool Completed { get; set; }
+        public List<StepViewModel> Step { get; set; }
     }
 }
