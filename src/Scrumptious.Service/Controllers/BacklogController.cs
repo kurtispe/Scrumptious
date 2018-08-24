@@ -1,0 +1,54 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Scrumptious.Data.Models;
+
+
+namespace Scrumptious.Service.Controllers
+{
+    [Produces("application/json")]
+    [Route("api/[controller]")]
+    public class BacklogController : Controller
+    {
+        private EntityData data;
+
+        public BacklogController()
+        {
+            data = new EntityData();
+        }
+
+        [HttpGet("{ID:int}")]
+        [ProducesResponseType(typeof(IActionResult), 200)]
+        public async Task<IActionResult> Get(int ID)
+        {
+            return await System.Threading.Tasks.Task.Run(() =>
+            {
+                return Ok(data.ReadList<Backlog>(ID));
+            });
+        }
+
+        [HttpPost]
+        public async System.Threading.Tasks.Task Post([FromBody] Backlog P)
+        {
+            await System.Threading.Tasks.Task.Run(() =>
+            {
+                data.SaveAsync(P);
+            });
+        }
+
+        [HttpPost]
+        [Route("post")]
+        public async System.Threading.Tasks.Task PostAddBacklog([FromBody] Data.Models.Backlog P)
+        {
+            await System.Threading.Tasks.Task.Run(() =>
+            {
+                Sprint ofIntrest = data.ReadList<Sprint>(P.FkSprintId);
+                ofIntrest.Backlog.Add(P);
+                data.SaveAsync(ofIntrest);
+            });
+        }
+    }
+}

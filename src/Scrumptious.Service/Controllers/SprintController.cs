@@ -1,0 +1,57 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Scrumptious.Data.Models;
+
+
+namespace Scrumptious.Service.Controllers
+{
+    [Produces("application/json")]
+    [Route("api/[controller]")]
+    public class SprintController : Controller
+    {
+        private EntityData data;
+
+        public SprintController()
+        {
+            data = new EntityData();
+        }
+
+        [HttpGet("{ID:int}")]
+        [ProducesResponseType(typeof(IActionResult), 200)]
+        public async Task<IActionResult> Get(int ID)
+        {
+            return await System.Threading.Tasks.Task.Run(() =>
+            {
+                return Ok(data.ReadList<Sprint>(ID));
+            });
+        }
+
+        [HttpPost]
+        public async System.Threading.Tasks.Task Post([FromBody] Sprint P)
+        {
+            await System.Threading.Tasks.Task.Run(() =>
+            {
+                data.SaveAsync(P);
+            });
+            
+        }
+
+        [HttpPost]
+        [Route("post")]
+        public async System.Threading.Tasks.Task PostAddSprint([FromBody] Sprint P)
+        {
+            await System.Threading.Tasks.Task.Run(() =>
+            {
+                Project ofIntrest = data.ReadList<Project>(P.FkProjectId);
+                ofIntrest.Sprint.Add(P);
+                data.SaveAsync(ofIntrest);
+            });
+        }
+
+
+    }
+}
