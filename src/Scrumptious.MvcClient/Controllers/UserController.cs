@@ -16,7 +16,7 @@ namespace Scrumptious.MvcClient.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            var x = await http.GetAsync("http://localhost:62021/api/user/1");
+            var x = await http.GetAsync("http://localhost:62021/api/user/");
             var content = JsonConvert.DeserializeObject<UserViewModel>(await x.Content.ReadAsStringAsync());
             ViewData["pagetitle"] = "Scrumptious";
             ViewBag.Title = "Scrumptious, the Scrum Master Program!";

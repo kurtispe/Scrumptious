@@ -54,8 +54,8 @@ namespace Scrumptious.Data.Models
 
                 context.User.Add(a as User);
                 await context.SaveChangesAsync();
-
             }
+
 
         }
 

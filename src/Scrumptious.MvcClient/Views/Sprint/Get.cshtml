@@ -1,12 +1,12 @@
-﻿
+
 <form action="/Sprint/sort" method="get">
     <label for="ID">
-        <strong>Select your sprint #:</strong><input type="number" id="ID" name="ID" min="1" max="100" required />
+        <strong>Select your project #:</strong><input type="number" id="ID" name="ID" min="1" max="100" required />
     </label>
     <button type="submit">Find it!</button>
 </form>
 @model Scrumptious.MvcClient.Models.SprintViewModel
-<form asp-action="post" asp-controller="project" method="post">
+<form asp-action="post" asp-controller="Sprint" method="post">
     <label for="ID">
         <strong>Make a new sprint!</strong>
         <strong>Give me the sprint name: </strong>@Html.TextBoxFor(m => m.Name, new { @required = "required", @class = "form-control" })
@@ -15,10 +15,10 @@
     </label>
     <button type="submit">Make it!</button>
 </form>
-@if (ViewBag.userQuery == true)
-{
-    <h3>@ViewBag.content.Name</h3>
-    <h3>@ViewBag.content.SprintDescription</h3>
-    <h3>@ViewBag.content.Completed</h3>
-    <h3>@ViewBag.content.SprintId</h3>
+@if(ViewBag.userQuery == true) {
+    {<h1>@ViewBag.content.Name</h1>
+    <h1>@ViewBag.content.SprintDescription</h1>
+    <h1>@ViewBag.content.Completed</h1>
+    <h1>@ViewBag.content.SprintId</h1>
+    }
 }

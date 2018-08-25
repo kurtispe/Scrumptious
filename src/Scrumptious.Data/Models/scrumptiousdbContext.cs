@@ -59,17 +59,17 @@ namespace Scrumptious.Data.Models
             modelBuilder.Entity<Project>(entity =>
             {
                 entity.Property(e => e.ProjectDescription)
-                    .IsRequired()
+                   // .IsRequired()
                     .HasColumnName("Project_Description")
                     .HasColumnType("text");
 
                 entity.Property(e => e.ProjectName)
-                    .IsRequired()
+                   // .IsRequired()
                     .HasColumnName("Project_Name")
                     .HasMaxLength(250);
 
                 entity.Property(e => e.ProjectRequirements)
-                    .IsRequired()
+                  //  .IsRequired()
                     .HasColumnName("Project_Requirements")
                     .HasColumnType("text");
             });

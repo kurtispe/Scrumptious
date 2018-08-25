@@ -23,6 +23,7 @@ namespace Scrumptious.Testing.Data
                 TaskDescription = "going to the sun boys",
                 Requirements = "need to get tan",
                 Completed = false,
+                
 
             };
         }

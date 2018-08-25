@@ -20,13 +20,17 @@ namespace Scrumptious.Testing.Data
         {
             sut = new Sprint()
             {
-                Name = "Sprint 1",
+                Name = "Sprint 2",
                 SprintDescription = "3 weeks to finish the rocket to the sun",
                 StartDate = DateTime.Now,
                 EndDate = DateTime.Now.AddMonths(1),
                 Completed = false,
-                Backlog = null,
+                Backlog = new List<Backlog>() { new Backlog() },
+                FkProjectId = 2,
+                FkProject = entity.ReadList<Project>(2) //needs this
             };
+
+
             sut.AddBacklog(new Backlog());
             
         }
@@ -45,7 +49,7 @@ namespace Scrumptious.Testing.Data
         public void Test_Sprint_Save_Mock()
         {
             var expected = 1;
-            mock.SaveAsync<Sprint>(sut);
+            entity.SaveAsync<Sprint>(sut);
             var actual = mock.Sprint.Count();
 
             Assert.True(expected <= actual);

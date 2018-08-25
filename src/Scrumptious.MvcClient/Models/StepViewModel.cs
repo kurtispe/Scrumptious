@@ -9,5 +9,6 @@ namespace Scrumptious.MvcClient.Models
     {
         public string Name { get; set; }
         public string StepDescription { get; set; }
+        public TaskViewModel Task { get; set; }
     }
 }
