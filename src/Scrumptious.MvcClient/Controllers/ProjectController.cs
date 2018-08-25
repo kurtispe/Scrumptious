@@ -51,7 +51,7 @@ namespace Scrumptious.MvcClient.Controllers
         public IActionResult Post(ProjectViewModel data)
         {
             data.active = false;
-            data.sprint = null;
+           // data.sprint = null;
             var content = JsonConvert.SerializeObject(data);
             http.PostAsync("http://localhost:62021/api/project", new StringContent(content, Encoding.UTF8, "application/json"));
             return Redirect("/project");

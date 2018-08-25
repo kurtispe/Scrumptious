@@ -16,7 +16,7 @@ namespace Scrumptious.MvcClient.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            var x = await http.GetAsync("http://localhost:62021/api/project/");
+            var x = await http.GetAsync("http://localhost:62021/api/sprint/");
             var content = JsonConvert.DeserializeObject<SprintViewModel>(await x.Content.ReadAsStringAsync());
             ViewData["pagetitle"] = "Scrumptious";
             ViewBag.Title = "Scrumptious, the Scrum Master Program!";
@@ -38,7 +38,7 @@ namespace Scrumptious.MvcClient.Controllers
         [HttpGet("{id:int}")]
         public async Task<IActionResult> Get(int id)
         {
-            var x = await http.GetAsync("http://localhost:62021/api/project/" + id);
+            var x = await http.GetAsync("http://localhost:62021/api/sprint/" + id);
             var content = JsonConvert.DeserializeObject<SprintViewModel>(await x.Content.ReadAsStringAsync());
             ViewData["pagetitle"] = "Scrumptious";
             ViewBag.Title = "Scrumptious, the Scrum Master Program!";
@@ -51,7 +51,7 @@ namespace Scrumptious.MvcClient.Controllers
         public IActionResult Post(SprintViewModel data)
         {
             var content = JsonConvert.SerializeObject(data);
-            http.PostAsync("http://localhost:62021/api/project", new StringContent(content, Encoding.UTF8, "application/json"));
+            http.PostAsync("http://localhost:62021/api/sprint", new StringContent(content, Encoding.UTF8, "application/json"));
             return Redirect("/sprint");
         }
 

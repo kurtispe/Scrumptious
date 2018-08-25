@@ -10,8 +10,9 @@ namespace Scrumptious.MvcClient.Models
         public string projectName { get; set; }
         public int projectId { get; set; }
         public string projectDescription { get; set; }
-        public List<SprintViewModel> sprint { get; set; }
+       // public List<SprintViewModel> sprint { get; set; }
         public bool active { get; set; }
         public string projectRequirements { get; set; }
+      
     }
 }
