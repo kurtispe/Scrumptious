@@ -16,7 +16,7 @@ namespace Scrumptious.MvcClient.Models
         public int FkProjectId { get; set; }
 
         public ICollection<BacklogViewModel> Backlog { get; set; }
-
+        public ProjectViewModel Project { get; set; }
         public string Name { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
