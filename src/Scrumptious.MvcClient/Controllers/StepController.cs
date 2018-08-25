@@ -17,7 +17,7 @@ namespace Scrumptious.MvcClient.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            var x = await http.GetAsync("http://localhost:62021/api/step/1");
+            var x = await http.GetAsync("http://localhost:62021/api/step/");
             var content = JsonConvert.DeserializeObject<StepViewModel>(await x.Content.ReadAsStringAsync());
             ViewData["pagetitle"] = "List of Steps";
             ViewBag.content = content;

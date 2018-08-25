@@ -16,7 +16,7 @@ namespace Scrumptious.Mvclient.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            var x = await http.GetAsync("http://localhost:62021/api/task/1");
+            var x = await http.GetAsync("http://localhost:62021/api/task/");
             var content = JsonConvert.DeserializeObject<TaskViewModel>(await x.Content.ReadAsStringAsync());
             ViewData["pagetitle"] = "List of Tasks";
             ViewBag.content = content;
