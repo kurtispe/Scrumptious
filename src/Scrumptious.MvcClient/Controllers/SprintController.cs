@@ -47,19 +47,9 @@ namespace Scrumptious.MvcClient.Controllers
             return View();
         }
 
-        [HttpGet("{id:int}")]
-        public async Task<ProjectViewModel> GetProjAsync(int id)
-        {
-            var p = await http.GetAsync("http://localhost:62021/api/project/" + id);
-            var project = JsonConvert.DeserializeObject<ProjectViewModel>(await p.Content.ReadAsStringAsync());
-            return project;
-        }
-
         [HttpPost]
         public async Task<IActionResult> Post(SprintViewModel data)
         {
-
-            //data.Project = await GetProjAsync(data.FkProjectId);
 
             var content = JsonConvert.SerializeObject(data);
 
