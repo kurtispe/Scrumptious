@@ -21,6 +21,6 @@ namespace Scrumptious.MvcClient.Models
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public string SprintDescription { get; set; }
-     //   public ProjectViewModel Project { get; set;}
+        public ProjectViewModel Project { get; set;}
     }
 }

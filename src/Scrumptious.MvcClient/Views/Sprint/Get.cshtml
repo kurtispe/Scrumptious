@@ -6,7 +6,7 @@
     <button type="submit">Find it!</button>
 </form>
 @model Scrumptious.MvcClient.Models.SprintViewModel
-<form asp-action="post" asp-controller="project" method="post">
+<form asp-action="post" asp-controller="Sprint" method="post">
     <label for="ID">
         <strong>Make a new sprint!</strong>
         <strong>Give me the sprint name: </strong>@Html.TextBoxFor(m => m.Name, new { @required = "required", @class = "form-control" })
