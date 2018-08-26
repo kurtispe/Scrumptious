@@ -37,10 +37,11 @@ namespace Scrumptious.MvcClient.Controllers
         }
 
         [HttpPost]
-        public void Post(BacklogViewModel data)
+        public async Task<IActionResult> Post(BacklogViewModel data)
         {
             var content = JsonConvert.SerializeObject(data);
-            http.PostAsync("http://localhost:62021/api/backlog", new StringContent(content, Encoding.UTF8, "application/json"));
+            await http.PostAsync("http://localhost:62021/api/backlog", new StringContent(content, Encoding.UTF8, "application/json"));
+            return Redirect("/backlog");
         }
 
     }
