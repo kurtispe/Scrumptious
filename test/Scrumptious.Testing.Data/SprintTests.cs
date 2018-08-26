@@ -27,7 +27,7 @@ namespace Scrumptious.Testing.Data
                 Completed = false,
                 Backlog = new List<Backlog>() { new Backlog() },
                 FkProjectId = 2,
-                FkProject = entity.ReadList<Project>(2) //needs this
+               // FkProject = entity.ReadList<Project>(2) //needs this
             };
 
 
