@@ -50,7 +50,7 @@ namespace Scrumptious.MvcClient.Controllers
         [HttpPost]
         public async Task<IActionResult> Post(SprintViewModel data)
         {
-
+            data.Completed = false;
             var content = JsonConvert.SerializeObject(data);
 
             await http.PostAsync("http://localhost:62021/api/sprint", new StringContent(content, Encoding.UTF8, "application/json"));

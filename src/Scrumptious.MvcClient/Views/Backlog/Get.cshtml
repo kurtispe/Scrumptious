@@ -1,1 +1,10 @@
 ﻿
+@model Scrumptious.MvcClient.Models.BacklogViewModel
+<form asp-action="post" asp-controller="backlog" method="post">
+    <label for="ID">
+        <strong>Create a new Backlog for a Sprint!</strong> <br />
+        <strong>What Sprint (by ID) does this Backlog belong to? </strong>@Html.TextBoxFor(m => m.FKSprintId, new { @required = "required", @class = "form-control" })
+    </label>
+    <button type="submit">Make it!</button>
+</form>
+
