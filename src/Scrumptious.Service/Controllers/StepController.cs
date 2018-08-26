@@ -51,16 +51,6 @@ namespace Scrumptious.Service.Controllers
             });
         }
 
-        [HttpPost]
-        [Route("post")]
-        public async System.Threading.Tasks.Task PostAddStep([FromBody] Step P)
-        {
-            await System.Threading.Tasks.Task.Run(() =>
-            {
-                Data.Models.Task ofIntrest = data.ReadList<Data.Models.Task>(P.FkTaskId);
-                ofIntrest.Step.Add(P);
-                data.SaveAsync(ofIntrest);
-            });
-        }
+     
     }
 }
