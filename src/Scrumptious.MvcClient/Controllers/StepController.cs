@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 using Scrumptious.MvcClient.Models;
 using System.Threading;
 using System.Text;
+using System.Collections.Generic;
 
 namespace Scrumptious.MvcClient.Controllers
 {
@@ -19,9 +20,21 @@ namespace Scrumptious.MvcClient.Controllers
         {
             var x = await http.GetAsync("http://localhost:62021/api/step/");
             var content = JsonConvert.DeserializeObject<StepViewModel>(await x.Content.ReadAsStringAsync());
-            ViewData["pagetitle"] = "List of Steps";
+            ViewData["pagetitle"] = "Scrumptious";
+            ViewBag.Title = "Scrumptious, the Scrum Master Program!";
             ViewBag.content = content;
+            ViewBag.userQuery = false;
             return View();
+        }
+
+        [HttpGet("{sort}")]
+        public IActionResult Get(string id)
+        {
+            ViewData["pagetitle"] = "Scrumptious";
+            ViewBag.Title = "Scrumptious, the Scrum Master Program!";
+            string s = Request.Query["ID"];
+            ViewBag.userQuery = true;
+            return Redirect("/step/" + s);
         }
 
         [HttpGet("{id:int}")]
@@ -29,21 +42,21 @@ namespace Scrumptious.MvcClient.Controllers
         {
             var x = await http.GetAsync("http://localhost:62021/api/step/" + id);
             var content = JsonConvert.DeserializeObject<StepViewModel>(await x.Content.ReadAsStringAsync());
-            ViewData["pagetitle"] = "List of Steps";
+            ViewData["pagetitle"] = "Scrumptious";
+            ViewBag.Title = "Scrumptious, the Scrum Master Program!";
+
             ViewBag.content = content;
+            ViewBag.userQuery = true;
             return View();
         }
 
         [HttpPost]
-        public void Post()
+        public IActionResult Post(StepViewModel data)
         {
-            var pvm = new StepViewModel()
-            {
-                Name = "step 1",
-                StepDescription = "get the thing to work"
-            };
-            var content = JsonConvert.SerializeObject(pvm);
+            data.Completed = false;
+            var content = JsonConvert.SerializeObject(data);
             http.PostAsync("http://localhost:62021/api/step", new StringContent(content, Encoding.UTF8, "application/json"));
+            return Redirect("/step");
         }
 
     }

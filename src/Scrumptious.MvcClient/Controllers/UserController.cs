@@ -50,6 +50,7 @@ namespace Scrumptious.MvcClient.Controllers
         [HttpPost]
         public IActionResult Post(UserViewModel data)
         {
+            data.Role = "User";
             var content = JsonConvert.SerializeObject(data);
             http.PostAsync("http://localhost:62021/api/user", new StringContent(content, Encoding.UTF8, "application/json"));
             return Redirect("/user");
