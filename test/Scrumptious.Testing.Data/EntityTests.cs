@@ -50,7 +50,7 @@ namespace Scrumptious.Testing.Data
 
             var expect = sut;
 
-            var actual = ctx.Project.Count();
+            var actual = mock.Project.Count();
             Assert.True(1 <= actual);
            
         }
