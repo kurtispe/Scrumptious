@@ -1,1 +1,25 @@
 ﻿
+<form action="/Sprint/sort" method="get">
+    <label for="ID">
+        <strong>Select your Step #:</strong><input type="number" id="ID" name="ID" min="1" max="100" required />
+    </label>
+    <button type="submit">Find it!</button>
+</form>
+@model Scrumptious.MvcClient.Models.StepViewModel
+<form asp-action="post" asp-controller="step" method="post">
+    <label for="ID">
+        <strong>Make a new step for a task!</strong>
+        <strong>Give me the step name: </strong>@Html.TextBoxFor(m => m.Name, new { @required = "required", @class = "form-control" })
+        <strong>What is it about?</strong>@Html.TextBoxFor(m => m.StepDescription, new { @required = "required", @class = "form-control" })
+        <strong>What Task (by its ID) does this step belong to?</strong>@Html.TextBoxFor(m => m.FkTaskId, new { @required = "required", @class = "form-control", @input = "number" })
+    </label>
+    <button type="submit">Make it!</button>
+</form>
+@if (ViewBag.userQuery == true)
+{
+    <h1>@ViewBag.content.Name</h1>
+    <h1>@ViewBag.content.StepDescription</h1>
+    <h1>Completed? <br />@ViewBag.content.Completed</h1>
+    <h1>@ViewBag.content.StepId</h1>
+
+}

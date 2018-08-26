@@ -17,7 +17,7 @@ namespace Scrumptious.MvcClient.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            var x = await http.GetAsync("http://localhost:62021/api/backlog/1");
+            var x = await http.GetAsync("http://localhost:62021/api/backlog");
             var content = JsonConvert.DeserializeObject<BacklogViewModel>(await x.Content.ReadAsStringAsync());
             ViewData["pagetitle"] = "Scrumptious";
             ViewBag.Title = "Scrumptious, the Scrum Master Program!";
@@ -37,9 +37,9 @@ namespace Scrumptious.MvcClient.Controllers
         }
 
         [HttpPost]
-        public void Post()
+        public void Post(BacklogViewModel data)
         {
-            var content = JsonConvert.SerializeObject(null);
+            var content = JsonConvert.SerializeObject(data);
             http.PostAsync("http://localhost:62021/api/backlog", new StringContent(content, Encoding.UTF8, "application/json"));
         }
 
