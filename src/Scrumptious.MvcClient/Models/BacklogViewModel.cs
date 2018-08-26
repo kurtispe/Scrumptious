@@ -9,6 +9,5 @@ namespace Scrumptious.MvcClient.Models
         public int FKSprintId { get; set; }
         public List<TaskViewModel> Task { get; set; }
 
-
     }
 }

@@ -13,12 +13,14 @@
         <h1><a asp-action="get" asp-controller="home">@ViewData["pagetitle"]</a></h1>
         <nav>
             <ul>
-                <li><a asp-action="get" asp-controller="project">Projects</a></li>
-                <li><a asp-action="get" asp-controller="sprint">Sprints</a></li>
-                <li><a asp-action="get" asp-controller="backlog">Backlog</a></li>
-                <li><a asp-action="get" asp-controller="task">Tasks</a></li>
-                <li><a asp-action="get" asp-controller="user">Users</a></li>
-                <li><a asp-action="get" asp-controller="step">Steps</a></li>
+
+                <li><a href="/project">Project</a></li>
+                <li><a href="/sprint">Sprints</a></li>
+                <li><a href="/backlog">Backlog</a></li>
+                <li><a href="/task">Task</a></li>
+                <li><a href="/user">Users</a></li>
+                <li><a href="/step">Steps</a></li>
+             
             </ul>
         </nav>
     </header>
