@@ -47,6 +47,7 @@ namespace Scrumptious.MvcClient.Controllers
 
             ViewBag.content = content;
             ViewBag.userQuery = true;
+            
             return View();
         }
 
