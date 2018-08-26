@@ -45,9 +45,10 @@ namespace Scrumptious.Testing.Data
         [Fact]
         public void Test_Step_Read_Mock()
         {
-            mock.SaveAsync<Step>(sut);
-            var expected = sut.StepId;
-            var actual = mock.ReadList<Step>(1);
+            Step sut2  = new Step() { Name = "BuildRocket", StepDescription = "add Rocket Fuel", Completed = false };
+            mock.SaveAsync(sut2);
+            var expected = sut2.StepId;
+            var actual = mock.ReadList<Step>(sut2.StepId);
             Assert.Equal(expected, actual.StepId);
         }
     }
