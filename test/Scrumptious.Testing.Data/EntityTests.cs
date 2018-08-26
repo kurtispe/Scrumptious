@@ -29,24 +29,24 @@ namespace Scrumptious.Testing.Data
             };
         }
 
-        [Fact]
-        public void SaveAndRead_Mock_Project_Async_Test()
-        {
-           sut.AddSprint();
-           mock.SaveAsync(sut);
+        //[Fact]
+        //public void SaveAndRead_Mock_Project_Async_Test()
+        //{
+           
+        //   mock.SaveAsync(sut);
 
-            var expect = sut;
+        // var expect = sut;
 
-          var actual = mock.ReadList<Project>(1);
-           Assert.True(1 <= mock.Project.Count());
-         Assert.Equal(expect.ProjectId, actual.ProjectId);
-        }
+        // var actual = mock.ReadList<Project>(1);
+        // Assert.True(1 <= mock.Project.Count());
+        // Assert.Equal(expect.ProjectId, actual.ProjectId);
+        //}
 
         [Fact]
         public void Save_Project_RealContext_Async_Test()
         {
-            sut.AddSprint();
-            entity.SaveAsync(sut);
+           
+            mock.SaveAsync(sut);
 
             var expect = sut;
 
