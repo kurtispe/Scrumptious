@@ -1,1 +1,30 @@
-﻿
+﻿<form action="/Task/sort" method="get">
+    <label for="ID">
+        <strong>Select your task #:</strong><input type="number" id="ID" name="ID" min="1" max="100" required />
+    </label>
+    <button type="submit">Find it!</button>
+</form>
+
+
+@model Scrumptious.MvcClient.Models.TaskViewModel
+<form asp-action="post" asp-controller="task" method="post">
+    <label for="ID">
+        <strong>Make a new task!</strong>
+        <strong>Task Tile: </strong>@Html.TextBoxFor(m => m.Name, new { @required = "required", @class = "form-control" })
+        <strong>What is it about?</strong>@Html.TextBoxFor(m => m.TaskDescription, new { @required = "required", @class = "form-control" })
+        <strong>What are the requirements?</strong>@Html.TextBoxFor(m => m.Requirements, new { @required = "required", @class = "form-control" })
+        <strong>What backlog (by its ID) does this task belong to?</strong>@Html.TextBoxFor(m => m.FkBacklogId, new { @required = "required", @class = "form-control", @input = "number" })
+        <strong>What User (by its ID) does this task belong to?</strong>@Html.TextBoxFor(m => m.FkUserId, new { @required = "required", @class = "form-control", @input = "number" })
+    </label>
+    <button type="submit">Make it!</button>
+</form>
+
+@if (ViewBag.userQuery == true)
+{
+    <h2>@ViewBag.content.Name</h2>
+    <h2>@ViewBag.content.TaskDescription</h2>
+    <h2>@ViewBag.content.Completed</h2>
+    <h2>@ViewBag.content.Requirements</h2>
+    <h2>@ViewBag.content.TaskId</h2>
+}
+

@@ -11,6 +11,9 @@ namespace Scrumptious.MvcClient.Models
         public string TaskDescription { get; set; }
         public string Requirements { get; set; }
         public bool Completed { get; set; }
-        public BacklogViewModel Backlog { get; set; }
+        public List<StepViewModel> Step { get; set; }
+        public int FkBacklogId { get; set; }
+        public int TaskId { get; set; }
+        public int FkUserId { get; set; }
     }
 }
