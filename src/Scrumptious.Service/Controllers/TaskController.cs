@@ -50,17 +50,6 @@ namespace Scrumptious.Service.Controllers
             });
         }
 
-        [HttpPost]
-        [Route("post")]
-        public async System.Threading.Tasks.Task PostAddTask([FromBody] Data.Models.Task P)
-        {
-            await System.Threading.Tasks.Task.Run(() =>
-            {
-                Backlog ofIntrest = data.ReadList<Backlog>(P.FkBacklogId);
-                ofIntrest.Task.Add(P);
-                data.SaveAsync(ofIntrest);
-            });
-        }
-
+      
     }
 }
