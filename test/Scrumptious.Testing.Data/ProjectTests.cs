@@ -50,14 +50,19 @@ namespace Scrumptious.Testing.Data
         [Fact]
         public void Test_Project_Read_Mock()
         {
-            mock.SaveAsync<Project>(sut);
 
-            var expected = sut.ProjectId;
-
-            var actual = mock.ReadList<Project>(1);
-
+            Project sut2 = new Project()
+            {
+                ProjectName = "sutName",
+                ProjectDescription = "cool project",
+                ProjectRequirements = "must work"
+            };
+            mock.SaveAsync(sut2);
+            var expected = sut2.ProjectId;
+            var actual = mock.ReadList<Project>(sut2.ProjectId);
             Assert.Equal(expected, actual.ProjectId);
         }
+   
 
     }
 }
