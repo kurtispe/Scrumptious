@@ -1,7 +1,7 @@
 
 <form action="/Sprint/sort" method="get">
     <label for="ID">
-        <strong>Select your project #:</strong><input type="number" id="ID" name="ID" min="1" max="100" required />
+        <strong>Select your Sprint #:</strong><input type="number" id="ID" name="ID" min="1" max="100" required />
     </label>
     <button type="submit">Find it!</button>
 </form>
@@ -16,9 +16,9 @@
     <button type="submit">Make it!</button>
 </form>
 @if(ViewBag.userQuery == true) {
-    {<h1>@ViewBag.content.Name</h1>
+    <h1>@ViewBag.content.Name</h1>
     <h1>@ViewBag.content.SprintDescription</h1>
-    <h1>@ViewBag.content.Completed</h1>
+    <h1>Completed? <br />@ViewBag.content.Completed</h1>
     <h1>@ViewBag.content.SprintId</h1>
-    }
+    
 }
