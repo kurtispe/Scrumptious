@@ -2,29 +2,35 @@
     <label for="ID">
         <strong>Select your task #:</strong><input type="number" id="ID" name="ID" min="1" max="100" required />
     </label>
+    <br />
     <button type="submit">Find it!</button>
 </form>
 
-
 @model Scrumptious.MvcClient.Models.TaskViewModel
-<form asp-action="post" asp-controller="task" method="post">
+
+<form asp-action="post" asp-controller="task" method="post" style="padding-top: 25px;">
     <label for="ID">
         <strong>Make a new task!</strong>
         <strong>Task Tile: </strong>@Html.TextBoxFor(m => m.Name, new { @required = "required", @class = "form-control" })
         <strong>What is it about?</strong>@Html.TextBoxFor(m => m.TaskDescription, new { @required = "required", @class = "form-control" })
-        <strong>What are the requirements?</strong>@Html.TextBoxFor(m => m.Requirements, new { @required = "required", @class = "form-control" })
+        <strong>What are the requirements? List them here </strong>@Html.TextAreaFor(m => m.Requirements, new { @required = "required", @class = "form-control" , @row = "20", @col = "20"})
         <strong>What backlog (by its ID) does this task belong to?</strong>@Html.TextBoxFor(m => m.FkBacklogId, new { @required = "required", @class = "form-control", @input = "number" })
         <strong>What User (by its ID) does this task belong to?</strong>@Html.TextBoxFor(m => m.FkUserId, new { @required = "required", @class = "form-control", @input = "number" })
-    </label>
+    </label> <br />
     <button type="submit">Make it!</button>
 </form>
+<h2 style="width: 100%; text-align:center">The step you query for displays below!</h2>
 
 @if (ViewBag.userQuery == true)
 {
-    <h2>@ViewBag.content.Name</h2>
-    <h2>@ViewBag.content.TaskDescription</h2>
-    <h2>@ViewBag.content.Completed</h2>
-    <h2>@ViewBag.content.Requirements</h2>
-    <h2>@ViewBag.content.TaskId</h2>
+<section style="width:100%; text-align:center; padding-top: 40px">
+    <div>@ViewBag.content.TaskId</div>
+    <div>Name: @ViewBag.content.Name</div>
+    <div>Description: @ViewBag.content.TaskDescription</div>
+    <div>Requirements: @ViewBag.content.Requirements</div>
+    <div>Completion Status: @ViewBag.content.Completed</div>
+
+
+</section>
 }
 

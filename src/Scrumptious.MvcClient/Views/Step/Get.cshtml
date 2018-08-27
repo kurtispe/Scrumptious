@@ -15,11 +15,13 @@
     </label>
     <button type="submit">Make it!</button>
 </form>
+<h2 style="width: 100%; text-align:center">The step you query for displays below!</h2>
 @if (ViewBag.userQuery == true)
 {
-    <h1>@ViewBag.content.Name</h1>
-    <h1>@ViewBag.content.StepDescription</h1>
-    <h1>Completed? <br />@ViewBag.content.Completed</h1>
-    <h1>@ViewBag.content.StepId</h1>
-
+    <section style="width:100%; text-align:center; padding-top: 20px">
+        <div>@ViewBag.content.StepId</div>
+        <div>Name: @ViewBag.content.Name</div>
+        <div>Description: @ViewBag.content.Description</div>
+        <div>Was it completed?: @ViewBag.content.completed</div>
+    </section>
 }

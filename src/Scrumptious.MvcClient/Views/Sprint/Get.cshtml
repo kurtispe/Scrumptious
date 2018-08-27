@@ -15,10 +15,14 @@
     </label>
     <button type="submit">Make it!</button>
 </form>
-@if(ViewBag.userQuery == true) {
-    <h1>@ViewBag.content.Name</h1>
-    <h1>@ViewBag.content.SprintDescription</h1>
-    <h1>Completed? <br />@ViewBag.content.Completed</h1>
-    <h1>@ViewBag.content.SprintId</h1>
-    
+
+<h2 style="width: 100%; text-align:center">The sprint you query for displays below!</h2>
+@if (ViewBag.userQuery == true)
+{
+    <section style="width:100%; text-align:center; padding-top: 20px">
+        <div>@ViewBag.content.SprintId</div>
+        <div>Name: @ViewBag.content.Name</div>
+        <div>Description: @ViewBag.content.Description</div>
+        <div>Is it active?: @ViewBag.content.active</div>
+    </section>
 }

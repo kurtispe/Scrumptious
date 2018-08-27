@@ -1,8 +1,9 @@
 ﻿
 <form action="/Project/sort" method="get">
     <label for="ID">
-        <strong>Select your project #:</strong><input type="number" id="ID" name="ID" min="1" max="100" required />    
+        <strong style="display: block">Select your project #:</strong><input type="number" id="ID" name="ID" min="1" max="100" required />
     </label>
+    <br />
     <button type="submit">Find it!</button>
 </form>
 
@@ -13,16 +14,20 @@
         <strong>Make a new project!</strong>
         <strong>Give me the project name: </strong>@Html.TextBoxFor(m => m.projectName, new { @required = "required", @class = "form-control" })
         <strong>What is it about?</strong>@Html.TextBoxFor(m => m.projectDescription, new { @required = "required", @class = "form-control" })
-        <strong>What are the requirements?</strong>@Html.TextBoxFor(m => m.projectRequirements, new { @required = "required", @class = "form-control" })
+        <strong>What are the requirements? List them in order</strong>@Html.TextAreaFor(m => m.projectRequirements, new { @required = "required", @class = "form-control", @row = "20", @col = "50" })
     </label>
+    <br />
     <button type="submit">Make it!</button>
 </form>
 
+<h2 style="width: 100%; text-align:center">The project you query for displays below!</h2>
 @if (ViewBag.userQuery == true)
 {
-    <h2>@ViewBag.content.projectName</h2>
-    <h2>@ViewBag.content.projectRequirements</h2>
-    <h2>@ViewBag.content.active</h2>
-    <h2>@ViewBag.content.projectDescription</h2>
-    <h2>@ViewBag.content.projectId</h2>
+    <section style="width:100%; text-align:center; padding-top: 20px">
+        <div>@ViewBag.content.projectId</div>
+        <div>Name: @ViewBag.content.projectName</div>
+        <div>Requirements: @ViewBag.content.projectRequirements</div>
+        <div>Description: @ViewBag.content.projectDescription</div>
+        <div>Completed: @ViewBag.content.active</div>
+    </section>
 }
