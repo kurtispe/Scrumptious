@@ -37,7 +37,8 @@ namespace Scrumptious.Data.Models
                 using (StreamReader reader = new StreamReader(path))
                 {
                     var list = JsonConvert.DeserializeObject<Dictionary<string, string>>(reader.ReadToEnd());
-                    optionsBuilder.UseSqlServer(list["connectionString"]);
+                   // optionsBuilder.UseSqlServer(list["connectionString"]);
+                   optionsBuilder.UseSqlServer("Server=tcp:scrumptious.database.windows.net,1433;Initial Catalog=scrumptiousdb;Persist Security Info=False;User ID=sqladmin;Password=Admin123!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;")
                 }
 
             }
