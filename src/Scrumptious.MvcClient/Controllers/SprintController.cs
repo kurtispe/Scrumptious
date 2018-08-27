@@ -14,13 +14,10 @@ namespace Scrumptious.MvcClient.Controllers
     {
         private readonly HttpClient http = new HttpClient();
         [HttpGet]
-        public async Task<IActionResult> Get()
+        public IActionResult Get()
         {
-            var x = await http.GetAsync("http://localhost:62021/api/sprint/");
-            var content = JsonConvert.DeserializeObject<SprintViewModel>(await x.Content.ReadAsStringAsync());
             ViewData["pagetitle"] = "Scrumptious";
             ViewBag.Title = "Scrumptious, the Scrum Master Program!";
-            ViewBag.content = content;
             ViewBag.userQuery = false;
             return View();
         }
